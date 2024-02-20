@@ -5,7 +5,6 @@ import com.nhnacademy.springmvc.domain.StudentRegisterRequest;
 import com.nhnacademy.springmvc.exception.ValidationFailedException;
 import com.nhnacademy.springmvc.repository.StudentRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;

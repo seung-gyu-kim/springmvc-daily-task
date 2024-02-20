@@ -2,7 +2,6 @@ package com.nhnacademy.springmvc.controller;
 
 import com.nhnacademy.springmvc.domain.Student;
 import com.nhnacademy.springmvc.domain.StudentModifyRequest;
-import com.nhnacademy.springmvc.domain.StudentRegisterRequest;
 import com.nhnacademy.springmvc.exception.StudentNotFoundException;
 import com.nhnacademy.springmvc.exception.ValidationFailedException;
 import com.nhnacademy.springmvc.repository.StudentRepository;
