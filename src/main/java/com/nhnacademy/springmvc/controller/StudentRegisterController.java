@@ -25,7 +25,7 @@ public class StudentRegisterController {
 
     @GetMapping
     public String studentRegisterForm() {
-        return "studentRegister";
+        return "thymeleaf/studentRegister";
     }
 
     @PostMapping
@@ -34,7 +34,7 @@ public class StudentRegisterController {
         if (bindingResult.hasErrors()) {
             throw new ValidationFailedException(bindingResult);
         }
-        ModelAndView mav = new ModelAndView("studentView");
+        ModelAndView mav = new ModelAndView("thymeleaf/studentView");
         Student student = studentRepository.register(studentRequest.getName(), studentRequest.getEmail(), studentRequest.getScore(), studentRequest.getComment());
         mav.addObject("student", student);
         return mav;

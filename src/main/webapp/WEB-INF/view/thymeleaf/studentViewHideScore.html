@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title th:text="#{학생_정보_조회}"></title>
+</head>
+<body th:object="${student}">
+    [[#{name}]]: [[*{name}]]<br />
+    [[#{email}]]: [[*{{email}}]]<br />
+    <br />
+    <a th:href="@{/student/{id}/modify(id=*{id})}" th:text="#{정보_수정}"></a><br />
+</body>
+</html>

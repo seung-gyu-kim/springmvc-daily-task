@@ -13,7 +13,7 @@ public class WebControllerAdvice {
         log.error("", ex);
 
         model.addAttribute("exception", ex);
-        return "error";
+        return "thymeleaf/error";
     }
 
 }

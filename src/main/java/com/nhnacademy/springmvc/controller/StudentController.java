@@ -36,7 +36,7 @@ public class StudentController {
 
     @GetMapping("/{studentId}")
     public ModelAndView viewStudent(@ModelAttribute("student") Student student) {
-        ModelAndView mav = new ModelAndView("studentView");
+        ModelAndView mav = new ModelAndView("thymeleaf/studentView");
         mav.addObject(student);
         return mav;
     }
@@ -44,12 +44,12 @@ public class StudentController {
     @GetMapping(path="/{studentId}", params="hideScore=yes")
     public String viewStudentHideScore(@ModelAttribute("student") Student student, Model model) {
         model.addAttribute(student);
-        return "studentViewHideScore";
+        return "thymeleaf/studentViewHideScore";
     }
 
     @GetMapping("/{studentId}/modify")
     public String studentModifyForm() {
-        return "studentModify";
+        return "thymeleaf/studentModify";
     }
 
     @PostMapping("/{studentId}/modify")
@@ -69,13 +69,13 @@ public class StudentController {
 
         model.addAttribute("student", student);
 
-        return "studentView";
+        return "thymeleaf/studentView";
     }
 
     @ExceptionHandler(StudentNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String notFound(StudentNotFoundException ex, Model model) {
         model.addAttribute("exception", ex);
-        return "error";
+        return "thymeleaf/error";
     }
 }

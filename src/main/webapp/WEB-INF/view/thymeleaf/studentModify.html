@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>[[#{학생_정보_수정}]]</title>
+</head>
+<body>
+<form method="post" th:action="@{/student/{id}/modify(id=*{id})}" th:object="${student}">
+    [[#{name}]]: <input type="text" th:field="*{name}" /><br />
+    [[#{email}]]: <input type="text" th:field="*{email}" /><br />
+    [[#{score}]]: <input type="number" th:field="*{score}" /><br />
+    [[#{comment}]]: <textarea type="text" rows="10" cols="80" th:field="*{comment}" /></textarea><br />
+    <br />
+    <input type="submit" th:value="#{submit}" />
+</form>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>[[#{학생_정보_등록}]]</title>
+</head>
+<body>
+<form method="post" action="/student/register">
+    [[#{name}]]: <input type="text" name="name" /><br />
+    [[#{email}]]: <input type="text" name="email" /><br />
+    [[#{score}]]: <input type="text" name="score" /><br />
+    [[#{comment}]]: <textarea name="comment" rows="10" cols="80"></textarea><br />
+    <br />
+    <input type="submit" th:value="#{submit}"/>
+</form>
+</body>
+</html>
