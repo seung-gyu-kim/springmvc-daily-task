@@ -1,6 +1,7 @@
 package com.nhnacademy.springmvc.config;
 
 import com.nhnacademy.springmvc.controller.ControllerBase;
+import com.nhnacademy.springmvc.interceptor.LoginCheckInterceptor;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -27,6 +28,12 @@ public class WebConfig implements WebMvcConfigurer, ApplicationContextAware, Mes
     private MessageSource messageSource;
 
     @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LocaleChangeInterceptor());
+        registry.addInterceptor(new LoginCheckInterceptor()).excludePathPatterns("/login");
+    }
+
+    @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }
@@ -45,11 +52,6 @@ public class WebConfig implements WebMvcConfigurer, ApplicationContextAware, Mes
     @Bean
     public LocaleResolver localeResolver() {
         return new SessionLocaleResolver();
-    }
-
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LocaleChangeInterceptor());
     }
 
     @Bean

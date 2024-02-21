@@ -2,7 +2,9 @@ package com.nhnacademy.springmvc.config;
 
 import com.nhnacademy.springmvc.Base;
 import com.nhnacademy.springmvc.repository.StudentRepository;
+import com.nhnacademy.springmvc.repository.UserRepository;
 import com.nhnacademy.springmvc.repository.impl.StudentRepositoryImpl;
+import com.nhnacademy.springmvc.repository.impl.UserRepositoryImpl;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,6 +22,14 @@ public class RootConfig {
         studentRepository.register("김학생", "kim.student@nhnacademy.com", 100, "훌륭");
 
         return studentRepository;
+    }
+
+    @Bean
+    public UserRepository userRepository() {
+        UserRepository userRepository = new UserRepositoryImpl();
+        userRepository.addUser("admin", "12345");
+
+        return userRepository;
     }
 
     @Bean

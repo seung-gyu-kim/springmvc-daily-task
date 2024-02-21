@@ -43,7 +43,7 @@ public class StudentController {
 
     @GetMapping(path="/{studentId}", params="hideScore=yes")
     public String viewStudentHideScore(@ModelAttribute("student") Student student, Model model) {
-        model.addAttribute(student);
+//        model.addAttribute(student);      // @ModelAttribute 모델에 자동 주입
         return "thymeleaf/studentViewHideScore";
     }
 
