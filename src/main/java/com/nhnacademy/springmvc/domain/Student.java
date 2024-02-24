@@ -1,11 +1,13 @@
 package com.nhnacademy.springmvc.domain;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@NoArgsConstructor
 public class Student {
     @Getter
-    private final long id;
+    private long id;
 
     @Getter
     @Setter

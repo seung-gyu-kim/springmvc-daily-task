@@ -1,18 +1,13 @@
 package com.nhnacademy.springmvc.controller;
 
 import com.nhnacademy.springmvc.domain.Student;
-import com.nhnacademy.springmvc.domain.StudentModifyRequest;
-import com.nhnacademy.springmvc.domain.StudentRegisterRequest;
 import com.nhnacademy.springmvc.domain.StudentRestRequest;
 import com.nhnacademy.springmvc.exception.StudentNotFoundException;
 import com.nhnacademy.springmvc.exception.ValidationFailedException;
 import com.nhnacademy.springmvc.repository.StudentRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -62,7 +57,7 @@ public class StudentRestController {
     @PostMapping
     public ResponseEntity<Student> registerStudent(@Valid @RequestBody StudentRestRequest studentRequest,
                                         BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
+        if(bindingResult.hasErrors()) {
             throw new ValidationFailedException(bindingResult);
         }
         Student student = studentRepository.register(studentRequest.getName(), studentRequest.getEmail(), studentRequest.getScore(), studentRequest.getComment());
