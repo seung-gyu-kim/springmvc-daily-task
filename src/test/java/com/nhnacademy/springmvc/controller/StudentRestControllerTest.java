@@ -187,4 +187,25 @@ class StudentRestControllerTest {
         // then
         Mockito.verify(studentRepository, Mockito.never()).register(Mockito.anyString(), Mockito.anyString(), Mockito.anyInt(), Mockito.anyString());
     }
+
+    @Test
+    void viewStudent_xml() throws Exception {
+        // given
+        Student expectedStudent = Student.create(1L);
+        expectedStudent.setName("John");
+        expectedStudent.setScore(100);
+        expectedStudent.setEmail("john@do.com");
+        expectedStudent.setComment("Good");
+        Mockito.when(studentRepository.getStudent(Mockito.anyLong())).thenReturn(expectedStudent);
+
+        // when then
+        mockMvc.perform(MockMvcRequestBuilders.get("/students/1")
+                        .param("format", "xml")
+                        .accept("application/xml"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.header().string("Content-Type", "application/xml;charset=UTF-8"))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("<Student>")))
+                .andReturn();
+    }
 }
